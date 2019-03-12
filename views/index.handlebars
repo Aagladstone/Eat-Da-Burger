@@ -1,0 +1,20 @@
+<h1>Devour Da Burger</h1>
+
+<ul>
+  {{#each plans}}
+  <li>
+    <p>
+      {{this.id}}. {{this.burger}}
+
+      <button data-planid="{{this.id}}" class="devour">Devour Burger!</button>
+    </p>
+  </li>
+  {{/each}}
+</ul>
+
+<h2>Create a Burger</h2>
+<form id="createburger" class="button-size">
+  <textarea type="text" name="newburger"></textarea>
+  <button type="submit">Save Plan!</button>
+</form>
+
