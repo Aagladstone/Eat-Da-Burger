@@ -1,20 +1,117 @@
-<h1>Devour Da Burger</h1>
+<h1>Devour The Burger!</h1>
+
+<h2>Available Burgers</h2>
 
 <ul>
-  {{#each plans}}
-  <li>
-    <p>
-      {{this.id}}. {{this.burger}}
-
-      <button data-planid="{{this.id}}" class="devour">Devour Burger!</button>
-    </p>
-  </li>
+  {{#each burger}}
+    {{#unless devoured}}
+      <button>{{this.burger_name}}</button>	
+      {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Create a Burger</h2>
-<form id="createburger" class="button-size">
-  <textarea type="text" name="newburger"></textarea>
-  <button type="submit">Save Plan!</button>
+<h2>Eaten Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+{{#unless devoured}}
+      <button>{{name.burger_name}}</button>	
+      {{/unless }}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <button type="submit">Add Burger!</button>
 </form>
 
+{{!-- <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+</script> --}}
+
+
+
+
+
+
+{{!-- <script type="text/javascript">
+  $(".delplan").on("click", function(event) {
+    // Get the ID from the button.
+    // This is shorthand for $(this).attr("data-planid")
+    var id = $(this).data("planid");
+
+    // Send the DELETE request.
+    $.ajax("/todos/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#createplan").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    // [name=plan] will find an element with a "name" attribute equal to the string "plan"
+    var newPlan = {
+      plan: $("#createplan [name=plan]").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/todos", {
+      type: "POST",
+      data: newPlan
+    }).then(
+      function() {
+        console.log("created new plan");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#updateplan").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    // Get the ID by finding an element with a "name" attribute equal to the string "id"
+    var id = $("[name=id]").val().trim();
+
+    var updatedPlan = {
+      plan: $("#updateplan [name=plan]").val().trim()
+    };
+
+    // Send the PUT request.
+    $.ajax("/todos/" + id, {
+      type: "PUT",
+      data: updatedPlan
+    }).then(
+      function() {
+        debugger;
+        console.log("updated id ", id);
+        debugger;
+        // Reload the page to get the updated list
+        location.reload();
+        debugger;
+      }
+    );
+  });
+</script> --}}
