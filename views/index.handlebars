@@ -6,7 +6,7 @@
   {{#each burgers}}
     {{#unless devoured}}
       <p>{{this.id}}.{{this.burger_name}}
-      	<button class="devour-burger" data-newdevoured="{{devoured}}" data-id="{{this.id}}">devour!</button>
+      	<button class="devour-burger" data-newdevoured="1" data-id="{{this.id}}">devour!</button>
       </p>
       {{/unless}}
   {{/each}}
@@ -69,7 +69,7 @@ $(function() {
     var newDevouredState = {
       devoured: newDevoured
     };
-    $.ajax("/api/burgers/" + id, {
+    $.ajax("/api/burger/" + id, {
       type: "PUT",
       data: newDevouredState
     }).then(function() {
